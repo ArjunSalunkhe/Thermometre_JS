@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Thermometer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .main{
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(42, 42, 110);
+        }
+        h1{
+            padding-top: 10%;
+            color: white;
+            font-size: 12vw;
+        }
+        #therm{
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <h1>The <br>Thermometer <span id="therm"></span></h1>
+    </div>
+    
+    <script>
+        let ther = document.querySelector("#therm");
+        ther.style.color = "white"
+
+        let therm = ()=>{
+
+            let f = 0;
+            setTimeout(() => {
+                ther.innerHTML = `<i class="fa-solid fa-temperature-empty"></i>`;
+                // ther.style.color = "white"
+                if(f == 0){
+                    ther.style.color = "white"
+                }
+                f = 1;
+            }, 0);
+
+            setTimeout(()=>{
+                ther.innerHTML = `<i class="fa-solid fa-temperature-quarter"></i>`;
+                // ther.style.color = "yellow";
+                if(f == 1){
+                    ther.style.color = "yellow"
+                }
+                f = 2
+            },1000)
+
+            setTimeout(()=>{
+                ther.innerHTML = `<i class="fa-solid fa-temperature-half"></i>`
+                // ther.style.color = "yellow";
+            },2000)
+            setTimeout(() => {
+                ther.innerHTML = `<i class="fa-solid fa-temperature-three-quarters"></i>`
+                // ther.style.color = "red";
+                if(f == 2){
+                    ther.style.color = "red"
+                }
+                f = 0
+            }, 3000);
+            setTimeout(() => {
+                ther.innerHTML = `<i class="fa-solid fa-temperature-full"></i>`
+                // ther.style.color = "red"
+                
+            }, 4000);
+        }
+        therm();
+
+        setInterval(therm,5000)
+
+    </script>
+
+    
+</body>
+</html>
